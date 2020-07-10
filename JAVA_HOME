@@ -1,0 +1,8 @@
+export PATH=$PATH:/usr/local/hadoop/bin
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export HADOOP_HOME=/usr/local/hadoop
+export PATH=${JAVA_HOME}/bin:$PATH
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+export JRE_HOME=${JAVA_HOME}/jre
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export PATH=$PATH:/usr/local/hbase/bin
