@@ -47,27 +47,25 @@ function StepTwo() {
 }
 
 function StepThree() {
-	echo "******* SteThree: Unzip the file into environment variables  *******"
+	echo "******* StepThree: Unzip the file into environment variables  *******"
 	wget http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-3.1.3/hadoop-3.1.3.tar.gz
-	sudo tar zxvf hadoop* -C /usr/local
-	cd /usr/local
-	sudo mv ./hadoop* ./hadoop
-	sudo chown -R hadoop ./hadoop
-	cd /usr/local/hadoop
-	echo "******* Print the version of hadoop *******"
-	./bin/hadoop version
-	echo "******* StepThree finished ******"
+        sudo tar zxvf hadoop* -C /usr/local
+        sudo mv /usr/local/hadoop* /usr/local/hadoop
+        sudo chown -R hadoop:hadoop /usr/local/hadoop
+        echo "******* Print the version of hadoop *******"
+        /usr/local/hadoop/bin/hadoop version
+        echo "******* StepThree finished ******"
+        sudo rm -rf *.tar.gz
+
 }
 
 function StepFour() {
 	echo "******* StepFour-1: Configure Non-Distributed  *******"
-	cd /usr/local/hadoop
-	mkdir ./input
-	cp ./etc/hadoop/*.xml ./input
-	./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-
-3.2.1.jar grep ./input ./output 'dfs[a-z.]+'
-	echo '******** StepFour-1 finished: Non-Distributed had set*********'
-	cat ./output/*
+	mkdir /usr/local/hadoop/input
+        cp /usr/local/hadoop/etc/hadoop/*.xml /usr/local/hadoop/input
+        /usr/local/hadoop/bin/hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.1.jar grep /usr/local/hadoop/input /usr/local/hadoop/output 'dfs[a-z.]+'
+        echo '******** StepFour-1 finished: Non-Distributed had set*********'
+        cat /usr/local/hadoop/output/*
 
 	echo '******** StepFour-2: Configure Pseudo-Distributed *********'
 	sudo mv *.xml /usr/local/hadoop/etc/hadoop
