@@ -90,6 +90,8 @@ function StepFour() {
 	jps
 	echo "******* StepFour all finished *******"
 	echo "******* All Configurations finished!  *******"
+	sudo rm -rf ../hadoop/
+	echo "******* Delete hadoop file successfully!  *******"
 }
 
 function printhelp() {
