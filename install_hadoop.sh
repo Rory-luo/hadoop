@@ -60,7 +60,7 @@ function StepThree() {
 	echo " "
 	wget http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-3.1.3/hadoop-3.1.3.tar.gz
         sudo tar zxvf hadoop* -C /usr/local
-        sudo mv /usr/local/hadoop* /usr/local/hadoop
+        sudo mv /usr/local/hadoop-3.1.3 /usr/local/hadoop
         sudo chown -R hadoop:hadoop /usr/local/hadoop
         echo "******* Print the version of hadoop *******"
         /usr/local/hadoop/bin/hadoop version
