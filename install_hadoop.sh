@@ -17,17 +17,21 @@ function StepOne() {
 } 
 
 function StepTwo() {
+        echo " "
         echo "********** StepTwo-1: Install java ************"
-        sudo apt autoremove openjdk-* -y
+        echo " "
+	sudo apt autoremove openjdk-* -y
         sudo apt install openjdk-8-jdk openjdk-8-jre -y
         echo "********** Finished install java ************"
         
+	echo " "
         echo "********** StepTwo-2: Configure JAVA_HOME ************"   
-
+	echo " "
+	
         grep -q 'export JAVA_HOME' ~/.bashrc
         if [ ! $? -eq 0  ] ;then
 
-                echo "将JAVA_HOME加入到.bashrc中"
+                echo "Configure .bashrc中"
 
                 cat ./JAVA_HOME | while read line
 
@@ -37,17 +41,23 @@ function StepTwo() {
                         echo "No.$line add sucessfully"
                 done
         else
-                echo " JAVA_HOME in .bashrc, program exit"
+                echo " JAVA_HOME etc in .bashrc, program exit"
         fi
+	
         source ~/.bashrc
-        echo "******* Print the environment of JAVA *******"
+        
+	echo " "
+	echo "******* Print the environment of JAVA *******"
 	echo $JAVA_HOME
 	java -version
 	$JAVA_HOME/bin/java -version
 }
 
 function StepThree() {
+	
+	echo " "
 	echo "******* StepThree: Unzip the file into environment variables  *******"
+	echo " "
 	wget http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-3.1.3/hadoop-3.1.3.tar.gz
         sudo tar zxvf hadoop* -C /usr/local
         sudo mv /usr/local/hadoop* /usr/local/hadoop
@@ -60,14 +70,18 @@ function StepThree() {
 }
 
 function StepFour() {
+	echo " "
 	echo "******* StepFour-1: Configure Non-Distributed  *******"
+	echo " "
 	mkdir /usr/local/hadoop/input
         cp /usr/local/hadoop/etc/hadoop/*.xml /usr/local/hadoop/input
         /usr/local/hadoop/bin/hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.1.jar grep /usr/local/hadoop/input /usr/local/hadoop/output 'dfs[a-z.]+'
         echo '******** StepFour-1 finished: Non-Distributed had set*********'
         cat /usr/local/hadoop/output/*
-
+	
+	echo " "
 	echo '******** StepFour-2: Configure Pseudo-Distributed *********'
+	echo " "
 	sudo mv *.xml /usr/local/hadoop/etc/hadoop
 	cd /usr/local/hadoop
 	./bin/hdfs namenode -format
