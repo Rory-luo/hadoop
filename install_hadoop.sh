@@ -13,7 +13,7 @@ function StepOne() {
 	sudo apt install openssh-server openssh-client -y
 	cd ~/.ssh
 	ssh-keygen -t rsa
-	cat ./id_rsa.pub >> ./authorized_keys
+	cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 } 
 
 function StepTwo() {
