@@ -48,7 +48,7 @@ function StepTwo() {
 
 function StepThree() {
 	echo "******* SteThree: Unzip the file into environment variables  *******"
-	wget http://mirror.bit.edu.cn/apache/hadoop/common/stable2/hadoop-3.2.1.tar.gz	
+	wget http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-3.1.3/hadoop-3.1.3.tar.gz
 	sudo tar zxvf hadoop* -C /usr/local
 	cd /usr/local
 	sudo mv ./hadoop* ./hadoop
