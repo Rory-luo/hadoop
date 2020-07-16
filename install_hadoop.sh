@@ -37,7 +37,7 @@ function StepTwo() {
 
                 do
                         echo $line
-                        sed -i "1i $line" .bashrc
+                        sed -i "1i $line" ~/.bashrc
                         echo "No.$line add sucessfully"
                 done
         else
